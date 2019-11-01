@@ -36,6 +36,22 @@ public class Coin{
   }
 
   /*
+  The accessor method for the face variable (a getter)
+  */
+
+  public int getFace(){
+    return Face;
+  }
+
+  /*
+  the mutator/modifier method for the face variable (a setter)
+  */
+
+  public void setFace((int) newFace){
+    Face = newFace;
+  }
+
+  /*
   prints out the current information about the state of a coin
   */
   public String toString(){

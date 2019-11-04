@@ -53,7 +53,7 @@ public void Drive(double miles){
 }
 
 public void refuel(double fuel){
-  if(fuel > fuelCapacity){
+  if(fuel > fuelCapacity || currentGas + fuel > fuelCapacity){
     currentGas = fuelCapacity;
     System.out.println("filled up to full");
     System.out.println("");

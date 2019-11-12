@@ -1,0 +1,11 @@
+attributes
+Account
+Name
+Money
+Account number
+Interest
+
+Behaviors
+Withdraw
+Deposit
+Add interest

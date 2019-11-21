@@ -19,6 +19,7 @@ public class bankPane extends Application{
   private double balance;
   private String accountNumber;
   private String accountName;
+  private int amount;
   private Label accountNameLabel = new Label("Name: ");
   private TextField accountNameTextField = new TextField();
   private Label testLabel = new Label();
@@ -37,10 +38,10 @@ public class bankPane extends Application{
 
   public void start(Stage stage){
     createAccountButton.setOnAction(this::createAccountProcess);
-
-    GridPane container = new GridPane();
-    container.add(grid, 0, 0);
-    container.add(textArea, 0, 2);
+    deposit.setOnAction(this::depositProcess);
+    viewAcct.setOnAction(this::viewAccount);
+    interest.setOnAction(this::addInterest);
+    withdraw.setOnAction(this::withdrawMoney);
 
     GridPane grid = new GridPane();
     grid.add(testLabel, 5, 5);
@@ -57,11 +58,19 @@ public class bankPane extends Application{
     grid.add(interest, 3, 3);
     grid.add(withdraw, 4, 2);
     grid.add(viewAcct, 4, 3);
-    HBox hb = new HBox();
+
+    GridPane container = new GridPane();
+    container.add(grid, 0, 0);
+    container.add(textArea, 0, 2);
+
+
+    //HBox hb = new HBox();
+
     //hb.getChildren().addAll(testLabel,accountNameLabel,accountNameTextField,createAccountButton,pinLabel,pinTextField,pinLabel2,pinTextField2,amountLabel,amountTextField,deposit,interest,withdraw,viewAcct);
     //grid.setHgap(1);
-    FlowPane flow = new FlowPane();
-    grid.add(flow, 4, 1);
+
+    //FlowPane flow = new FlowPane();
+    //grid.add(flow, 4, 1);
 
     //grid.setPrefSize(300, 300);
 
@@ -71,7 +80,7 @@ public class bankPane extends Application{
     grid.setStyle("-fx-background-color: white");
     //flow.setStyle("-fx-background-color: white");
 
-    Scene scene = new Scene(grid, 900,700);
+    Scene scene = new Scene(container, 900,700);
     stage.setTitle("Bank GUI");
     stage.setScene(scene);
     stage.show();
@@ -83,15 +92,47 @@ public class bankPane extends Application{
   private void createAccountProcess(ActionEvent event){
     accountName = accountNameTextField.getText();
     accountNumber = pinTextField.getText();
-    testLabel.setText(accountName + accountNumber);
+    textArea.setText("Created account:" + accountName + " " + accountNumber);
   }
 
   private void depositProcess(ActionEvent event){
-    balance = balance + Integer.parseInt(amountTextField.getText());
-    testLabel.setText(testLabel.getText(testLabel) + "/n" + amountTextField.getText);
+    if(accountNumber.compareTo(pinTextField2.getText()) == 0){
+    amount = Integer.parseInt(amountTextField.getText());
+    balance = balance + amount;
+    String amountString = String.valueOf(amount);
+    textArea.setText("Deposited: $" + amountString);
+  }else{
+    textArea.setText("Wrong pin. please try again");
+  }
   }
 
+  private void viewAccount(ActionEvent event){
+    if(accountNumber.compareTo(pinTextField2.getText()) == 0){
+    textArea.setText("Account name: " + accountName + "\n" + "Balance: $" + balance);
+  }else{
+    textArea.setText("Wrong pin. please try again");
+  }
+  }
 
+  private void addInterest(ActionEvent event){
+    if(accountNumber.compareTo(pinTextField2.getText() == 0){
+    balance = balance * 1.03;
+    textArea.setText("New Balance after Interest: " + "Balance: $" + balance);
+  }else{
+    textArea.setText("Wrong pin. please try again");
+  }
+}
+
+  private void withdrawMoney(ActionEvent event){
+    if(accountNumber.compareTo(pinTextField2.getText()) == 0){
+      amount = Integer.parseInt(amountTextField.getText());
+      balance = balance - amount;
+      String amountString = String.valueOf(amount);
+      textArea.setText("Withdrew: $" + amountString);
+    }else{
+      textArea.setText("Wrong pin. please try again");
+    }
+  }
 
 
 }

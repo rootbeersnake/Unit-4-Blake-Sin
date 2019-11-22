@@ -14,6 +14,7 @@ import javafx.scene.text.Font;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.TextArea;
+import java.text.DecimalFormat;
 
 public class bankPane extends Application{
   private double balance;
@@ -92,7 +93,9 @@ public class bankPane extends Application{
   private void createAccountProcess(ActionEvent event){
     accountName = accountNameTextField.getText();
     accountNumber = pinTextField.getText();
-    textArea.setText("Created account:" + accountName + " " + accountNumber);
+    textArea.setText("Created account: " + accountName + " " + accountNumber);
+    accountNameTextField.setText("");
+    pinTextField.setText("");
   }
 
   private void depositProcess(ActionEvent event){
@@ -115,7 +118,7 @@ public class bankPane extends Application{
   }
 
   private void addInterest(ActionEvent event){
-    if(accountNumber.compareTo(pinTextField2.getText() == 0){
+    if(accountNumber.compareTo(pinTextField2.getText()) == 0){
     balance = balance * 1.03;
     textArea.setText("New Balance after Interest: " + "Balance: $" + balance);
   }else{
@@ -124,15 +127,17 @@ public class bankPane extends Application{
 }
 
   private void withdrawMoney(ActionEvent event){
+    amount = Integer.parseInt(amountTextField.getText());
     if(accountNumber.compareTo(pinTextField2.getText()) == 0){
-      amount = Integer.parseInt(amountTextField.getText());
+      if(amount > balance){
+        textArea.setText("You don't have enough money. Please withdraw less");
+    }else{
       balance = balance - amount;
       String amountString = String.valueOf(amount);
       textArea.setText("Withdrew: $" + amountString);
-    }else{
-      textArea.setText("Wrong pin. please try again");
     }
+  }else{
+    textArea.setText("Wrong pin. please try again");
   }
-
-
+}
 }

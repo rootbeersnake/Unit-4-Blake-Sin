@@ -39,32 +39,61 @@ public class PigDice{
       System.out.println("d2 rolled: " + dice2.getFace());
       System.out.println("");
       if(dice1.getFace() == 1 || dice2.getFace() == 1){
-        roundScore = 0;
-        System.out.println("");
-        System.out.println("you rolled a one. changing turns");
-        System.out.println("Player 1's score: " + p1Score);
-        System.out.println("Player 2's score: " + p2Score);
-        p1Turn = !p1Turn;
-        System.out.println("Player 1's turn = " + p1Turn);
-        System.out.println("");
-        System.out.println("");
-        System.out.println("enter 1 to roll and 2 to pass. enter 0 to quit");
-        System.out.println("");
-        answer = scan.nextInt();
+        if(dice1.getFace() == 1 && dice2.getFace() == 1){
+          roundScore = 0;
+          if(p1Turn == true){
+            p1Score = 0;
+            System.out.println("");
+            System.out.println("You rolled double ones. changing turns");
+            System.out.println("Player 1's score: " + p1Score);
+            System.out.println("Player 2's score: " + p2Score);
+            p1Turn = false;
+            System.out.println("Player 1's turn = " + p1Turn);
+            System.out.println("");
+          }else{
+            p2Score = 0;
+            System.out.println("");
+            System.out.println("You rolled double ones. changing turns");
+            System.out.println("Player 1's score: " + p1Score);
+            System.out.println("Player 2's score: " + p2Score);
+            p1Turn = true;
+            System.out.println("Player 1's turn = " + p1Turn);
+            System.out.println("");
+          }
+        }else{
+          roundScore = 0;
+          System.out.println("");
+          System.out.println("you rolled a one. changing turns");
+          System.out.println("Player 1's score: " + p1Score);
+          System.out.println("Player 2's score: " + p2Score);
+          p1Turn = !p1Turn;
+          System.out.println("Player 1's turn = " + p1Turn);
+          System.out.println("");
+        }
+
       }else{
-        roundScore = dice1.getFace() + dice2.getFace();
+        System.out.println("Round Score: " + roundScore);
+        roundScore = roundScore + dice1.getFace() + dice2.getFace();
         System.out.println("");
         System.out.println("Round score: " + roundScore);
         System.out.println("Player 1's score: " + p1Score);
         System.out.println("Player 2's score: " + p2Score);
-        System.out.println("enter 1 to roll and 2 to pass. enter 0 to quit");
         System.out.println("Player 1's turn = " + p1Turn);
         System.out.println("");
-        answer = scan.nextInt();
       }
     }else if(answer == 2){
       if(p1Turn == true){
         p1Score = p1Score + roundScore;
+        if(p1Score >= 100){
+          p1Score = 0;
+          p2Score = 0;
+          roundScore = 0;
+          p1Turn = true;
+          System.out.println("")
+          System.out.println("Player 1 won! Press 1 to play again or 0 to quit");
+          System.out.println("")
+          answer = scan.nextInt();
+        }
         roundScore = 0;
         p1Turn = !p1Turn;
         System.out.println("");
@@ -74,6 +103,16 @@ public class PigDice{
         System.out.println("");
       }else{
         p2Score = p2Score + roundScore;
+        if(p2Score >= 100){
+          p1Score = 0;
+          p2Score = 0;
+          roundScore = 0;
+          p1Turn = true;
+          System.out.println("")
+          System.out.println("Player 2 won! Press 1 to play again or 0 to quit");
+          System.out.println("")
+          answer = scan.nextInt();
+        }
         roundScore = 0;
         p1Turn = !p1Turn;
         System.out.println("");
@@ -83,8 +122,6 @@ public class PigDice{
         System.out.println("");
       }
     }
-
-
 
     }
   }

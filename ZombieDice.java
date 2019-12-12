@@ -1,11 +1,10 @@
 /*
-·         Players start with 0 points
-·         A player rolls two six sided dice. After each roll, the player may choose to roll again or pass the turn
-·         If neither die shows a 1, their sum is added to the round score.
-·         If exactly one die shows a 1, the player scores nothing, their round total is lost, and their turn ends.
-·         If double 1s are rolled, the player’s total score is lost, and their turn ends.
-·         If a player passes the round score is added to their total score, and the next player takes their turn.
-·         The game ends when a player reaches 100 total points.
+brain = 1
+foot = 2
+shotgun = 3
+6 Green
+4 Yellow
+3 Red
 */
 import java.util.Scanner;
 
@@ -21,8 +20,22 @@ public class PigDice{
 
     // scanner for part 1
     Scanner scan = new Scanner(System.in);
-    Dice dice1 = new Dice();
-    Dice dice2 = new Dice();
+    //Dice dice1 = new Dice();
+    //Dice dice2 = new Dice();
+
+    //red dice
+    ZombieDiceRed red1 = new ZombieDiceRed();
+    ZombieDiceRed red2 = new ZombieDiceRed();
+    ZombieDiceRed red3 = new ZombieDiceRed();
+
+    //yellow dice
+    ZombieDiceYellow yellow1 = new ZombieDiceYellow();
+    ZombieDiceYellow yellow2 = new ZombieDiceYellow();
+    ZombieDiceYellow yellow3 = new ZombieDiceYellow();
+    ZombieDiceYellow yellow4 = new ZombieDiceYellow();
+
+    //green dice
+    ZombieDiceGreen green[] = new ZombieDiceGreen[6];
 
     // game in command prompt
     while(answer != 0){

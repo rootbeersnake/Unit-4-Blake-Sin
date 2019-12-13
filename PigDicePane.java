@@ -70,4 +70,29 @@ public void start(Stage stage){
       stage.show();
 
     };
+
+
+private void updateText(ActionEvent event){
+if(p1turn == true){
+  P1D1.setText(dice1.getFace());
+  P1D2.setText(dice2.getFace());
+}
+if(p1turn == false){
+  P2D1.setText(dice1.getFace());
+  P2D2.setText(dice2.getFace());
+}
+
+  P1Score.setText("Your Score: " + P1Score);
+  P2Score.setText("Your Score: " + P2Score);
+  if(p1Turn == true){
+    P1RoundScore.setText("Round Score: " + roundScore);
+    P2RoundScore.setText("Round Score: --");
+    CurrentTurn.setText("Player 1 Turn");
+  }else{
+    P1RoundScore.setText("Round Score: --");
+    P2RoundScore.setText("Round Score: " + roundScore);
+    CurrentTurn.setText("Player 2 Turn");
+  }
+
+};
 };

@@ -29,9 +29,9 @@ public class DiceRoller {
           YellowDice[i] = new ZombieDiceYellow();
         }
         int listRolled;
-        int diceRolledGreen;
-        int diceRolledRed;
-        int diceRolledYellow;
+        Integer diceRolledGreen;
+        Integer diceRolledRed;
+        Integer diceRolledYellow;
         //green = list1
         //red = list2
         //yellow = list3
@@ -40,20 +40,37 @@ public class DiceRoller {
           listRolled = rand.nextInt(3)+1;
           if(listRolled == 1){
             diceRolledGreen = rand.nextInt(GreenDice.length);
-            GreenDice[diceRolledGreen].GreenRoll();
             System.out.println("Rolled from list: " + listRolled);
+            while(diceRolledGreen == null){
+              System.out.println("Object was null");
+              diceRolledGreen = rand.nextInt(GreenDice.length);
+            }
+            GreenDice[diceRolledGreen].GreenRoll();
+            //System.out.println("Rolled from list: " + listRolled);
             System.out.println("Green dice rolled: " + GreenDice[diceRolledGreen].GreenGetFace() + "\n");
             GreenDice[diceRolledGreen] = null;
           }else if(listRolled == 2){
             diceRolledRed = rand.nextInt(RedDice.length);
-            RedDice[diceRolledRed].RedRoll();
             System.out.println("Rolled from list: " + listRolled);
+            while(diceRolledRed == null){
+              System.out.println("Object was null");
+              diceRolledRed = rand.nextInt(RedDice.length);
+            }
+
+            RedDice[diceRolledRed].RedRoll();
+            //System.out.println("Rolled from list: " + listRolled);
             System.out.println("Red dice rolled: " + RedDice[diceRolledRed].RedGetFace() + "\n");
             RedDice[diceRolledRed] = null;
           }else{
             diceRolledYellow = rand.nextInt(YellowDice.length);
-            YellowDice[diceRolledYellow].YellowRoll();
             System.out.println("Rolled from list: " + listRolled);
+            while(diceRolledYellow == null){
+              System.out.println("Object was null");
+              diceRolledYellow = rand.nextInt(YellowDice.length);
+            }
+
+            YellowDice[diceRolledYellow].YellowRoll();
+            //System.out.println("Rolled from list: " + listRolled);
             System.out.println("Yellow dice rolled: " + YellowDice[diceRolledYellow].YellowGetFace() + "\n");
             YellowDice[diceRolledYellow] = null;
           }

@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class ZombieDiceRed{
-  private int RedFace;
+  private Integer RedFace;
   //private boolean brain = false;
   //private boolean foot = false;
   //private boolean shotgun = false;
@@ -22,7 +22,7 @@ public class ZombieDiceRed{
     RedFace = 1;
   }
 
-  public int RedGetFace() {
+  public Integer RedGetFace() {
     return RedFace;
   }
 }

@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class ZombieDiceYellow{
-  private int YellowFace;
+  private Integer YellowFace;
 
   public void YellowRoll(){
     Random rand = new Random();
@@ -19,7 +19,7 @@ public class ZombieDiceYellow{
     YellowFace = 1;
   }
 
-  public int YellowGetFace() {
+  public Integer YellowGetFace() {
     return YellowFace;
   }
 }

@@ -32,6 +32,9 @@ public class DiceRoller {
         Integer diceRolledGreen;
         Integer diceRolledRed;
         Integer diceRolledYellow;
+        int redList = 0 ;
+        int greenList = 0;
+        int yellowList = 0;
         //green = list1
         //red = list2
         //yellow = list3
@@ -48,7 +51,9 @@ public class DiceRoller {
             GreenDice[diceRolledGreen].GreenRoll();
             //System.out.println("Rolled from list: " + listRolled);
             System.out.println("Green dice rolled: " + GreenDice[diceRolledGreen].GreenGetFace() + "\n");
+            System.out.println("Green dice pulled: " + GreenDice[diceRolledGreen] + "\n");
             GreenDice[diceRolledGreen] = null;
+            greenList++;
           }else if(listRolled == 2){
             diceRolledRed = rand.nextInt(RedDice.length);
             System.out.println("Rolled from list: " + listRolled);
@@ -60,7 +65,9 @@ public class DiceRoller {
             RedDice[diceRolledRed].RedRoll();
             //System.out.println("Rolled from list: " + listRolled);
             System.out.println("Red dice rolled: " + RedDice[diceRolledRed].RedGetFace() + "\n");
+            System.out.println("Red dice pulled: " + RedDice[diceRolledRed] + "\n");
             RedDice[diceRolledRed] = null;
+            redList++;
           }else{
             diceRolledYellow = rand.nextInt(YellowDice.length);
             System.out.println("Rolled from list: " + listRolled);
@@ -72,7 +79,9 @@ public class DiceRoller {
             YellowDice[diceRolledYellow].YellowRoll();
             //System.out.println("Rolled from list: " + listRolled);
             System.out.println("Yellow dice rolled: " + YellowDice[diceRolledYellow].YellowGetFace() + "\n");
+            System.out.println("Yellow dice pulled: " + YellowDice[diceRolledYellow] + "\n");
             YellowDice[diceRolledYellow] = null;
+            yellowList++;
           }
         }
       }

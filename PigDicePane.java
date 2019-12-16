@@ -18,6 +18,13 @@ import java.text.DecimalFormat;
 
 public class PigDicePane extends Application{
 
+  int answer = 5;
+  int p1Score = 0;
+  int p2Score = 0;
+  boolean p1Turn = true;
+  int roundScore = 0;
+  Dice dice1 = new Dice();
+  Dice dice2 = new Dice();
   private Label P1D1;
   private Label P1D2;
   private Label P2D1;
@@ -34,6 +41,10 @@ public class PigDicePane extends Application{
 
 
 public void start(Stage stage){
+
+  Roll.setOnAction(this::updateText);
+  Pass.setOnAction(this::updateText);
+  //Roll.setOnAction(this::);
 
   P1D1 = new Label("D1: 0");
   P1D2 = new Label("D2: 0");
@@ -73,13 +84,17 @@ public void start(Stage stage){
 
 
 private void updateText(ActionEvent event){
+
+  //dice1.getFace().toString(int)
+  //Integer.toString(dice1.getFace())
+
 if(p1turn == true){
-  P1D1.setText(dice1.getFace());
-  P1D2.setText(dice2.getFace());
+  P1D1.setText(Integer.toString(dice1.getFace()));
+  P1D2.setText(Integer.toString(dice1.getFace()));
 }
 if(p1turn == false){
-  P2D1.setText(dice1.getFace());
-  P2D2.setText(dice2.getFace());
+  P2D1.setText(Integer.toString(dice1.getFace()));
+  P2D2.setText(Integer.toString(dice1.getFace()));
 }
 
   P1Score.setText("Your Score: " + P1Score);
@@ -95,4 +110,7 @@ if(p1turn == false){
   }
 
 };
+//private void RollMeth(ActionEvent event){
+//  if()
+//}
 };

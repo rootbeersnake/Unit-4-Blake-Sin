@@ -59,6 +59,7 @@ public void start(Stage stage){
   CurrentTurn = new Label("Player 1 Turn");
   Dice dice1 = new Dice();
   Dice dice2 = new Dice();
+  Adding addScore = new Adding();
   Roll.setOnAction(this::RollMeth);
   Pass.setOnAction(this::changeTurn);
 
@@ -117,7 +118,8 @@ if(p1Turn == false){
 private void RollMeth(ActionEvent event){
  dice1.roll();
  dice2.roll();
-
+P1Score.setText("Your Score: " + p1Score);
+P2Score.setText("Your Score: " + p2Score);
 if(dice1.getFace() == 1 || dice2.getFace() == 1){
   if(dice1.getFace() == 1 && dice2.getFace() == 1){
     roundScore = 0;
@@ -126,8 +128,8 @@ if(dice1.getFace() == 1 || dice2.getFace() == 1){
     if(p1Turn == true){
       P1D1.setText("D1: " + Integer.toString(dice1.getFace()));
       P1D2.setText("D2: " + Integer.toString(dice2.getFace()));
-      P2D1.setText("D1: ");
-      P2D2.setText("D2: ");
+      P2D1.setText("D1: 0");
+      P2D2.setText("D2: 0");
       p1Score = 0;
       P1Score.setText("Your Score: " + p1Score);
       p1Turn = false;
@@ -135,8 +137,8 @@ if(dice1.getFace() == 1 || dice2.getFace() == 1){
     }else{
       P2D1.setText("D1: " + Integer.toString(dice1.getFace()));
       P2D2.setText("D2: " + Integer.toString(dice2.getFace()));
-      P1D1.setText("D1: ");
-      P1D2.setText("D2: ");
+      P1D1.setText("D1: 0");
+      P1D2.setText("D2: 0");
       p2Score = 0;
       P2Score.setText("Your Score: " + p2Score);
       p1Turn = true;
@@ -151,15 +153,21 @@ if(dice1.getFace() == 1 || dice2.getFace() == 1){
       P1RoundScore.setText("Round Score: " + roundScore);
       P2RoundScore.setText("Round Score: " + roundScore);
       P1Score.setText("Your Score: " + p1Score);
+      P2D1.setText("D1: 0");
+      P2D2.setText("D2: 0");
       p1Turn = false;
+      CurrentTurn.setText("Player 2 Turn");
     }else{
       roundScore = 0;
       P2D1.setText("D1: " + Integer.toString(dice1.getFace()));
       P2D2.setText("D2: " + Integer.toString(dice2.getFace()));
       P1RoundScore.setText("Round Score: " + roundScore);
       P2RoundScore.setText("Round Score: " + roundScore);
-      P2Score.setText("Your Score: " + p1Score);
+      P2Score.setText("Your Score: " + p2Score);
+      P1D1.setText("D1: 0");
+      P1D2.setText("D2: 0");
       p1Turn = true;
+      CurrentTurn.setText("Player 1 Turn");
     }
 
   }
@@ -198,7 +206,7 @@ private void changeTurn(ActionEvent event){
       P2Score.setText("Your score: 0");
       P1RoundScore.setText("Round Score: 0");
       P2RoundScore.setText("Round Score: 0");
-    }
+    }else{
     roundScore = 0;
     P1RoundScore.setText("Round Score: " + roundScore);
     P2RoundScore.setText("Round Score: " + roundScore);
@@ -208,7 +216,7 @@ private void changeTurn(ActionEvent event){
     P1D2.setText("D2: 0");
     P2D1.setText("D1: 0");
     P2D2.setText("D2: 0");
-
+    }
   }else{
     p2Score = p2Score + roundScore;
     P2Score.setText("Your Score: " + p2Score);

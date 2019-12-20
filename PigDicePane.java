@@ -124,28 +124,59 @@ if(dice1.getFace() == 1 || dice2.getFace() == 1){
     P1RoundScore.setText("Round Score: " + roundScore);
     P2RoundScore.setText("Round Score: " + roundScore);
     if(p1Turn == true){
-      
+      P1D1.setText("D1: " + Integer.toString(dice1.getFace()));
+      P1D2.setText("D2: " + Integer.toString(dice2.getFace()));
+      P2D1.setText("D1: ");
+      P2D2.setText("D2: ");
       p1Score = 0;
       P1Score.setText("Your Score: " + p1Score);
-      p1Turn = !p1Turn;
+      p1Turn = false;
+      CurrentTurn.setText("Player 2 turn");
     }else{
+      P2D1.setText("D1: " + Integer.toString(dice1.getFace()));
+      P2D2.setText("D2: " + Integer.toString(dice2.getFace()));
+      P1D1.setText("D1: ");
+      P1D2.setText("D2: ");
       p2Score = 0;
       P2Score.setText("Your Score: " + p2Score);
-      p1Turn = !p1Turn;
+      p1Turn = true;
+      CurrentTurn.setText("Player 1 turn");
     }
 
   }else{
-    roundScore = 0;
-    P1RoundScore.setText("Round Score: " + roundScore);
-    P2RoundScore.setText("Round Score: " + roundScore);
-    p1Turn = !p1Turn;
+    if(p1Turn == true){
+      roundScore = 0;
+      P1D1.setText("D1: " + Integer.toString(dice1.getFace()));
+      P1D2.setText("D2: " + Integer.toString(dice2.getFace()));
+      P1RoundScore.setText("Round Score: " + roundScore);
+      P2RoundScore.setText("Round Score: " + roundScore);
+      P1Score.setText("Your Score: " + p1Score);
+      p1Turn = false;
+    }else{
+      roundScore = 0;
+      P2D1.setText("D1: " + Integer.toString(dice1.getFace()));
+      P2D2.setText("D2: " + Integer.toString(dice2.getFace()));
+      P1RoundScore.setText("Round Score: " + roundScore);
+      P2RoundScore.setText("Round Score: " + roundScore);
+      P2Score.setText("Your Score: " + p1Score);
+      p1Turn = true;
+    }
+
   }
 }else{
   roundScore = roundScore + dice1.getFace() + dice2.getFace();
   if(p1Turn == true){
     P1RoundScore.setText("Round Score: " + roundScore);
+    P1D1.setText("D1: " + Integer.toString(dice1.getFace()));
+    P1D2.setText("D2: " + Integer.toString(dice2.getFace()));
+    P2D1.setText("D1: 0");
+    P2D2.setText("D2: 0");
   }else{
     P2RoundScore.setText("Round Score: " + roundScore);
+    P2D1.setText("D1: " + Integer.toString(dice1.getFace()));
+    P2D2.setText("D2: " + Integer.toString(dice2.getFace()));
+    P1D1.setText("D1: 0");
+    P1D2.setText("D2: 0");
   }
 }
 }
@@ -162,12 +193,21 @@ private void changeTurn(ActionEvent event){
       p2Score = 0;
       roundScore = 0;
       p1Turn = true;
+      CurrentTurn.setText("Player 1 Turn");
       P1Score.setText("Player 1 won");
+      P2Score.setText("Your score: 0");
+      P1RoundScore.setText("Round Score: 0");
+      P2RoundScore.setText("Round Score: 0");
     }
     roundScore = 0;
     P1RoundScore.setText("Round Score: " + roundScore);
     P2RoundScore.setText("Round Score: " + roundScore);
-    p1Turn = !p1Turn;
+    p1Turn = false;
+    CurrentTurn.setText("Player 2 Turn");
+    P1D1.setText("D1: 0");
+    P1D2.setText("D2: 0");
+    P2D1.setText("D1: 0");
+    P2D2.setText("D2: 0");
 
   }else{
     p2Score = p2Score + roundScore;
@@ -177,12 +217,21 @@ private void changeTurn(ActionEvent event){
       p2Score = 0;
       roundScore = 0;
       p1Turn = true;
+      CurrentTurn.setText("Player 1 Turn");
       P2Score.setText("Player 2 won");
+      P1Score.setText("Your score: 0");
+      P1RoundScore.setText("Round Score: 0");
+      P2RoundScore.setText("Round Score: 0");
     }
     roundScore = 0;
     P1RoundScore.setText("Round Score: " + roundScore);
     P2RoundScore.setText("Round Score: " + roundScore);
-    p1Turn = !p1Turn;
+    p1Turn = true;
+    CurrentTurn.setText("Player 1 Turn");
+    P1D1.setText("D1: 0");
+    P1D2.setText("D2: 0");
+    P2D1.setText("D1: 0");
+    P2D2.setText("D2: 0");
   }
 }
 };
